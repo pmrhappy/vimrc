@@ -22,6 +22,7 @@ set nobackup
 "set scrolljump=5
 set incsearch
 set nowrap
+set encoding=utf-8
 
 
 " Plugins will be downloaded under the specified directory.
@@ -72,7 +73,6 @@ autocmd bufenter *.py vmap " :s/^#/<CR> /疑～～～～～ <CR>:<Esc>
 autocmd bufenter *.c vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
 autocmd bufenter *.cpp vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
 autocmd bufenter *.h vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
-
 
 "for Plugin 'scrooloose/syntastic'
 let g:syntastic_python_checkers = ['flake8', 'pylint']
