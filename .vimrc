@@ -18,12 +18,14 @@ set autoindent
 set smartindent
 set expandtab
 set nobackup
-"set scrolloff=3
+set scrolloff=7
 "set scrolljump=5
 set incsearch
 set nowrap
 set encoding=utf-8
 
+"autocmd BufWritePost /mnt/* !synas %:p
+"autocmd BufWritePost /mnt/* !updear %:p
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
@@ -38,7 +40,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'mhinz/vim-signify'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -47,6 +50,7 @@ nmap <F8> :TagbarToggle<CR>
 nnoremap <silent> <F5> :NERDTree<CR>
 "colorscheme torte
 "let NERDTreeMapOpenInTab='<ENTER>'
+let NERDTreeShowHidden=1
 nnoremap <S-Tab> :tabnext<CR>
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 nnoremap * *``
@@ -74,18 +78,21 @@ autocmd bufenter *.c vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
 autocmd bufenter *.cpp vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
 autocmd bufenter *.h vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
 
-"for Plugin 'scrooloose/syntastic'
-let g:syntastic_python_checkers = ['flake8', 'pylint']
-nmap <F9> :lclose<CR>
-"let g:syntastic_python_checkers = ['prospector']
-let g:syntastic_python_python_use_codec = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+let b:ale_linters = {'Python': ['prospector']}
+"let b:ale_linters = {'Python': ['flake8']}
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
+""for Plugin 'scrooloose/syntastic'
+"let g:syntastic_python_checkers = ['flake8'] ", 'pylint']
+"nmap <F9> :lclose<CR>
+""let g:syntastic_python_checkers = ['prospector']
+"let g:syntastic_python_python_use_codec = 1
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 0
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 1
+"let g:syntastic_error_symbol = "✗"
+"let g:syntastic_warning_symbol = "⚠"
