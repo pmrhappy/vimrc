@@ -23,6 +23,7 @@ set scrolloff=7
 set incsearch
 set nowrap
 set encoding=utf-8
+cs add cscope.out
 
 "autocmd BufWritePost /mnt/* !synas %:p
 "autocmd BufWritePost /mnt/* !updear %:p
@@ -80,6 +81,28 @@ autocmd bufenter *.h vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
 
 let b:ale_linters = {'Python': ['prospector']}
 "let b:ale_linters = {'Python': ['flake8']}
+
+"" for cscope
+if has("cscope")
+    set csto=0
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+    " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
+    nmap <C-a> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-d> :cs find 1 <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-f> :cs find 2 <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-c> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-x> :cs find 4 <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-i> :cs find 8 <C-R>=expand("%:t:r")<CR><CR>
+endif
+
 
 ""for Plugin 'scrooloose/syntastic'
 "let g:syntastic_python_checkers = ['flake8'] ", 'pylint']
