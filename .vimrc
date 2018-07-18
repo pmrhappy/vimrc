@@ -24,6 +24,7 @@ set incsearch
 set nowrap
 set encoding=utf-8
 cs add cscope.out
+nmap <C-\> :noh<CR>
 
 "autocmd BufWritePost /mnt/* !synas %:p
 "autocmd BufWritePost /mnt/* !updear %:p
@@ -43,9 +44,13 @@ Plug 'flazz/vim-colorschemes'
 Plug 'mhinz/vim-signify'
 "Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
+Plug 'kshenoy/vim-signature'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
+
+"" for vim-signature
+highlight SignColumn ctermbg=8
 
 nmap <F8> :TagbarToggle<CR>
 nnoremap <silent> <F5> :NERDTree<CR>
