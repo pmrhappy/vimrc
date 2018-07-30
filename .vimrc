@@ -28,6 +28,9 @@ nmap <C-\> :noh<CR>
 " json formatter
 nmap <C-j> :%!python -m json.tool<CR>
 
+" python dict_str to json formatter
+cmap dj<CR> :%s/\n//g<CR> \| !%~/scripts/dict_str_to_json<CR>
+
 " Python Traceback formatter
 :cmap pt<CR> :%s/\n//g \| %s/File/\rFile/g \| %s/    /\r    /g<CR>
 

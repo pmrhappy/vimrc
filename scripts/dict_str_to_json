@@ -1,0 +1,14 @@
+#!/usr/bin/python
+import json
+import sys
+import ast
+
+infile = sys.stdin
+outfile = sys.stdout
+with infile:
+    str = infile.readline()
+    d = ast.literal_eval(str.strip())
+
+    with outfile:
+        json.dump(d, outfile, sort_keys=True, indent=4, separators=(',', ': '))
+        outfile.write('\n')
