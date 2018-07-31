@@ -1,6 +1,20 @@
+augroup user_autocmd
+    " clear all autocmd while (re)loading
+    autocmd!
+
+    autocmd BufWritePost /mnt/* !synas %:p
+    "autocmd BufWritePost /mnt/* !updear %:p
+
+    " if cscope.out exists, update it while saving files
+    autocmd BufWritePost /mnt/* silent! ![ -f cscope.out ] && pycscope -R &
+augroup END
+
+" clear all mapping while (re)loading
+mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
+
 set number
 set t_Co=256
-colorscheme koehler
+colorscheme torte
 set cursorline
 "hi CursorLine cterm=none ctermbg=5f00ff ctermfg=White
 set cursorcolumn
@@ -23,8 +37,10 @@ set scrolloff=7
 set incsearch
 set nowrap
 set encoding=utf-8
-cs add cscope.out
+:silent! cs add cscope.out
 nmap <C-\> :noh<CR>
+nmap <F2> :so $MYVIMRC<CR>
+
 " json formatter
 nmap <C-j> :%!python -m json.tool<CR> \| :noh<CR>
 
@@ -33,12 +49,6 @@ cmap dj<CR> :%s/\n//g<CR> \| !%~/scripts/dict_str_to_json<CR> \| :noh<CR>
 
 " Python Traceback formatter
 cmap pt<CR> :%s/\n//g \| %s/File/\rFile/g \| %s/    /\r    /g<CR> \| :noh<CR>
-
-"autocmd BufWritePost /mnt/* !synas %:p
-"autocmd BufWritePost /mnt/* !updear %:p
-
-" if cscope.out exists, update it while saving files
-autocmd BufWritePost /mnt/* silent! ![ -f cscope.out ] && pycscope -R &
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
@@ -65,7 +75,6 @@ highlight SignColumn ctermbg=8
 
 nmap <F8> :TagbarToggle<CR>
 nnoremap <silent> <F5> :NERDTree<CR>
-"colorscheme torte
 "let NERDTreeMapOpenInTab='<ENTER>'
 let NERDTreeShowHidden=1
 nnoremap <S-Tab> :tabnext<CR>
@@ -135,3 +144,5 @@ endif
 "let g:syntastic_check_on_wq = 1
 "let g:syntastic_error_symbol = "✗"
 "let g:syntastic_warning_symbol = "⚠"
+
+noh
