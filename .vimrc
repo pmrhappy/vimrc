@@ -32,10 +32,13 @@ nmap <C-j> :%!python -m json.tool<CR> \| :noh<CR>
 cmap dj<CR> :%s/\n//g<CR> \| !%~/scripts/dict_str_to_json<CR> \| :noh<CR>
 
 " Python Traceback formatter
-:cmap pt<CR> :%s/\n//g \| %s/File/\rFile/g \| %s/    /\r    /g<CR> \| :noh<CR>
+cmap pt<CR> :%s/\n//g \| %s/File/\rFile/g \| %s/    /\r    /g<CR> \| :noh<CR>
 
 "autocmd BufWritePost /mnt/* !synas %:p
 "autocmd BufWritePost /mnt/* !updear %:p
+
+" if cscope.out exists, update it while saving files
+autocmd BufWritePost /mnt/* silent! ![ -f cscope.out ] && pycscope -R &
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
