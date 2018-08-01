@@ -9,8 +9,8 @@ augroup user_autocmd
     autocmd BufWritePost /mnt/* silent! ![ -f cscope.out ] && pycscope -R &
 augroup END
 
-" clear all mapping while (re)loading
-mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
+" [Will make ctrlP Fail] clear all mapping while (re)loading
+"mapclear | mapclear <buffer> | mapclear! | mapclear! <buffer>
 
 set number
 set t_Co=256
@@ -125,6 +125,7 @@ if has("cscope")
     nmap <C-f> :cs find 2 <C-R>=expand("<cword>")<CR><CR>
     nmap <C-c> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
     nmap <C-x> :cs find 4 <C-R>=expand("<cword>")<CR><CR>
+    nmap <C-g> :cs find f <C-R>=expand("<cword>")<CR><CR>
     nmap <C-i> :cs find 8 <C-R>=expand("%:t:r")<CR><CR>
 endif
 
