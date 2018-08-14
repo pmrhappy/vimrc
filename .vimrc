@@ -40,9 +40,13 @@ set encoding=utf-8
 :silent! cs add cscope.out
 nmap <C-\> :noh<CR>
 nmap <F2> :so $MYVIMRC<CR>
+nmap <F3> :tabe $MYVIMRC<CR>
 
 " json formatter
 nmap <C-j> :%!python -m json.tool<CR> \| :noh<CR>
+
+" XML formatter
+cmap xmlf<CR> :%!xmllint --format -<CR>
 
 " python dict_str to json formatter
 cmap dj<CR> :%s/\n//g<CR> \| !%~/scripts/dict_str_to_json<CR> \| :noh<CR>
