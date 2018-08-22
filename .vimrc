@@ -51,6 +51,12 @@ cmap xmlf<CR> :%!xmllint --format -<CR>
 " python dict_str to json formatter
 cmap dj<CR> :%s/\n//g<CR> \| !%~/scripts/dict_str_to_json<CR> \| :noh<CR>
 
+" python json to yaml formatter
+cmap jy<CR> :%!~/scripts/json_to_yaml<CR> \| :noh<CR>
+
+" python yaml to json formatter
+cmap yj<CR> :%!~/scripts/yaml_to_json<CR> \| :noh<CR>
+
 " Python Traceback formatter
 cmap pt<CR> :%s/\n//g \| %s/File/\rFile/g \| %s/    /\r    /g<CR> \| :noh<CR>
 
