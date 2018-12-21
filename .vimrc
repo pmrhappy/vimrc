@@ -3,6 +3,7 @@ augroup user_autocmd
     autocmd!
 
     autocmd BufWritePost /mnt/* !synas %:p
+    autocmd FileType cpp setlocal ts=4 sts=4 sw=4
     "autocmd BufWritePost /mnt/* !updear %:p
 
     " if cscope.out exists, update it while saving files
