@@ -4,6 +4,10 @@ augroup user_autocmd
 
     autocmd BufWritePost /mnt/* !synas %:p
     autocmd FileType cpp setlocal ts=4 sts=4 sw=4
+    autocmd FileType c setlocal ts=4 sts=4 sw=4
+    autocmd FileType h setlocal ts=4 sts=4 sw=4
+    autocmd FileType yml setlocal ts=4 sts=4 sw=4
+    autocmd FileType yaml setlocal ts=4 sts=4 sw=4
     "autocmd BufWritePost /mnt/* !updear %:p
 
     " if cscope.out exists, update it while saving files
@@ -89,6 +93,7 @@ nnoremap <silent> <F5> :NERDTree<CR>
 "let NERDTreeMapOpenInTab='<ENTER>'
 let NERDTreeShowHidden=1
 nnoremap <S-Tab> :tabnext<CR>
+nnoremap <Leader><Tab> :tabprevious<CR>
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 nnoremap * *``
 
