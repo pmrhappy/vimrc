@@ -65,6 +65,9 @@ cmap yj<CR> :%!~/scripts/yaml_to_json<CR> \| :noh<CR>
 " Python Traceback formatter
 cmap pt<CR> :%s/\n//g \| %s/File/\rFile/g \| %s/    /\r    /g<CR> \| :noh<CR>
 
+" close current tab
+cmap qt<CR> :tabclose<CR>
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
