@@ -1,17 +1,22 @@
+function! UpdateCscope()
+    if filereadable(getcwd()."/cscope.out")
+        cs kill 0
+        !cscope -Rbq
+        cs add cscope.out
+    endif
+endfunction
+
 augroup user_autocmd
     " clear all autocmd while (re)loading
     autocmd!
 
     autocmd BufWritePost /mnt/* !synas %:p
-    autocmd FileType cpp setlocal ts=4 sts=4 sw=4
-    autocmd FileType c setlocal ts=4 sts=4 sw=4
-    autocmd FileType h setlocal ts=4 sts=4 sw=4
-    autocmd FileType yml setlocal ts=4 sts=4 sw=4
-    autocmd FileType yaml setlocal ts=4 sts=4 sw=4
+    autocmd FileType cpp,c,h,hpp,yml,yaml setlocal ts=4 sts=4 sw=4
     "autocmd BufWritePost /mnt/* !updear %:p
 
     " if cscope.out exists, update it while saving files
-    autocmd BufWritePost /mnt/* silent! ![ -f cscope.out ] && pycscope -R &
+    autocmd BufWritePost /mnt/*.py silent! ![ -f cscope.out ] && pycscope -R &
+    autocmd BufWritePost /mnt/*.cpp,/mnt/*.h silent call UpdateCscope()
 augroup END
 
 " [Will make ctrlP Fail] clear all mapping while (re)loading
