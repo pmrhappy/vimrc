@@ -16,7 +16,7 @@ augroup user_autocmd
 
     " if cscope.out exists, update it while saving files
     autocmd BufWritePost /mnt/*.py silent! ![ -f cscope.out ] && pycscope -R &
-    autocmd BufWritePost /mnt/*.cpp,/mnt/*.h silent call UpdateCscope()
+    "autocmd BufWritePost /mnt/*.cpp,/mnt/*.h silent call UpdateCscope()
 augroup END
 
 " [Will make ctrlP Fail] clear all mapping while (re)loading
@@ -51,6 +51,7 @@ set encoding=utf-8
 nmap <C-\> :noh<CR>
 nmap <F2> :so $MYVIMRC<CR>
 nmap <F3> :tabe $MYVIMRC<CR>
+nmap <F4> :call UpdateCscope()<CR>
 
 " json formatter
 nmap <C-j> :%!python -m json.tool<CR> \| :noh<CR>
