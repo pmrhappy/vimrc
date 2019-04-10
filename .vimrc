@@ -90,6 +90,7 @@ Plug 'mhinz/vim-signify'
 "Plug 'scrooloose/syntastic'
 Plug 'w0rp/ale'
 Plug 'kshenoy/vim-signature'
+Plug 'guns/xterm-color-table.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
