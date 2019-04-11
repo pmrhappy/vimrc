@@ -92,6 +92,10 @@ Plug 'w0rp/ale'
 Plug 'kshenoy/vim-signature'
 Plug 'guns/xterm-color-table.vim'
 
+"" These two markdown-relative plugins cannot be used in docker
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -172,4 +176,20 @@ endif
 "let g:syntastic_error_symbol = "✗"
 "let g:syntastic_warning_symbol = "⚠"
 
+
+""for Plugin iamcco/markdown-preview.vim
+let g:mkdp_path_to_chrome = "google-chrome --no-sandbox"
+" Path to the chrome or the command to open chrome (or other modern browsers).
+" If set, g:mkdp_browserfunc would be ignored.
+
+let g:mkdp_browserfunc = 'MKDP_browserfunc_default'
+" Callback Vim function to open browser, the only parameter is the url to open.
+
+let g:mkdp_auto_start = 0
+" Set to 1, Vim will open the preview window on entering the Markdown
+" buffer.
+
+let g:mkdp_auto_open = 0
+" Set to 1, Vim will automatically open the preview window when you edit a
+" Markdown file.
 noh
