@@ -25,13 +25,17 @@ augroup END
 set number
 set t_Co=256
 colorscheme torte
+
+"" change highlight color
+hi Search cterm=NONE ctermfg=lightgreen ctermbg=darkyellow
 set cursorline
-"hi CursorLine cterm=none ctermbg=5f00ff ctermfg=White
+hi CursorLine cterm=none ctermbg=darkblue
 set cursorcolumn
 "hi CursorColumn cterm=none ctermbg=DarkMagenta ctermfg=White
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 set colorcolumn=80
+hi colorcolumn ctermbg=87ff87
 set mouse=a
 set ruler
 set smartcase
