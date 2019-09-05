@@ -56,6 +56,7 @@ nmap <C-\> :noh<CR>
 nmap <F2> :so $MYVIMRC<CR>
 nmap <F3> :tabe $MYVIMRC<CR>
 nmap <F4> :call UpdateCscope()<CR>
+nmap <F6> :!synas %:p<CR>
 
 " json formatter
 nmap <C-j> :%!python -m json.tool<CR> \| :noh<CR>
@@ -100,6 +101,7 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 
+Plug 'tpope/vim-fugitive'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
