@@ -34,6 +34,10 @@ set cursorcolumn
 "hi CursorColumn cterm=none ctermbg=DarkMagenta ctermfg=White
 "set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+" show specail chars
+set listchars=tab:..
+set list
+
 set colorcolumn=80
 hi colorcolumn ctermbg=87ff87
 set mouse=a
