@@ -100,6 +100,7 @@ Plug 'mhinz/vim-signify'
 Plug 'w0rp/ale'
 Plug 'kshenoy/vim-signature'
 Plug 'guns/xterm-color-table.vim'
+Plug 'AndrewRadev/linediff.vim'
 
 "" These two markdown-relative plugins cannot be used in docker
 Plug 'iamcco/mathjax-support-for-mkdp'
