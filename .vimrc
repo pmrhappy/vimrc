@@ -122,28 +122,23 @@ nnoremap <Leader><Tab> :tabprevious<CR>
 nnoremap <silent><Leader><C-]> <C-w><C-]><C-w>T
 nnoremap * *``
 
+let cpp_types="c,cpp,h,hpp"
+" a / needs \\ to escape because the first one is used for variable,
+" second is for autocmd
+let cpp_mark_macro=" ?  :s/^/\\/\\//g<CR> /goal_of_life <CR>:<Esc>"
+let cpp_unmark_macro=' " :s/^\/\///g<CR> /goal_of_life <CR>:<Esc>'
 "" COMMENTING
 autocmd bufenter *.py nmap ?  :s/^/#<CR> /只好去旁邊畫圈圈 <CR>:<Esc>
-autocmd bufenter *.h nmap  ?  :s/^/\/\/<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.c nmap  ?  :s/^/\/\/<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.cpp nmap ?  :s/^/\/\/<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.cpp nmap ?  :s/^/\/\/<CR> :let @/ = ""<CR><Esc>
+execute "autocmd FileType " . join([g:cpp_types, " nmap ", g:cpp_mark_macro])
 " COMMENTING
 autocmd bufenter *.py vmap ? :s/^/#<CR> /怪我囉? <CR>:<Esc>
-autocmd bufenter *.h vmap ?  :s/^/\/\/<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.c vmap ?  :s/^/\/\/<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.cpp vmap ?  :s/^/\/\/<CR> /goal_of_life <CR>:<Esc>
+execute "autocmd FileType " . join([g:cpp_types, " vmap ", g:cpp_mark_macro])
 
 " UNCOMMENTING
 autocmd bufenter *.py nmap " :s/^#/<CR> /找別人幫忙找辣 <CR>:<Esc>
-autocmd bufenter *.c nmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.cpp nmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.h nmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
-" UNCOMMENTING IN .C FILE
+execute "autocmd FileType " . join([g:cpp_types, " nmap ", g:cpp_unmark_macro])
 autocmd bufenter *.py vmap " :s/^#/<CR> /疑～～～～～ <CR>:<Esc>
-autocmd bufenter *.c vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.cpp vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
-autocmd bufenter *.h vmap  " :s/^\/\///<CR> /goal_of_life <CR>:<Esc>
+execute "autocmd FileType " . join([g:cpp_types, " vmap ", g:cpp_unmark_macro])
 
 let b:ale_linters = {'Python': ['prospector']}
 "let b:ale_linters = {'Python': ['flake8']}
