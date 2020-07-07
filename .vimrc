@@ -84,6 +84,10 @@ cmap pt<CR> :%s/\n//g \| %s/File/\rFile/g \| %s/    /\r    /g<CR> \| :noh<CR>
 " close current tab
 cmap qt<CR> :tabclose<CR>
 
+cmap dh<CR> :set cursorbind!<CR>
+cmap ds<CR> :set scrollbind!<CR>
+cmap df<CR> :set diff!<CR>
+
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
