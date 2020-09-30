@@ -97,7 +97,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 "Plug 'vim-scripts/cscope.vim'
-Plug 'Valloric/YouCompleteMe'
+" for python2 support(ycm after this version doesn't support py2)
+Plug 'Valloric/YouCompleteMe', { 'commit': '6e2afb635' }
 Plug 'scrooloose/nerdtree'
 Plug 'flazz/vim-colorschemes'
 Plug 'mhinz/vim-signify'
