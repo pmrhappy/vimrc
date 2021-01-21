@@ -164,10 +164,11 @@ if has("cscope")
     nmap <C-f> :cs find 2 <C-R>=expand("<cword>")<CR><CR>
     nmap <C-c> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
     nmap <C-x> :cs find 4 <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-g> :cs find f <C-R>=expand("<cword>")<CR><CR>
+    "nmap <C-g> :cs find f <C-R>=expand("<cword>")<CR><CR>
     nmap <C-i> :cs find 8 <C-R>=expand("%:t:r")<CR><CR>
 endif
 
+nmap <C-g> : echo expand("%:p")<CR>
 
 ""for Plugin 'scrooloose/syntastic'
 "let g:syntastic_python_checkers = ['flake8'] ", 'pylint']
